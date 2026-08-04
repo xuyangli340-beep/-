@@ -8,3 +8,5 @@ export default defineConfig({
     },
   },
 });
+export default defineConfig({
+  base: '/xuyangli340-beep/',
