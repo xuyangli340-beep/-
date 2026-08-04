@@ -1,4 +1,4 @@
-name: Deploy Website
+name: Deploy Static Web
 on:
   push:
     branches: [ main ]
@@ -7,7 +7,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -18,8 +18,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build frontend
-        run: npm run build
+      # 使用内置前端打包命令 build:client
+      - name: Build Vite frontend
+        run: npm run build:client
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
